@@ -3,6 +3,12 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
+// Huom tarkastajalle: Tiny-konfiguraatiota ei voinut käyttää, Morgan valitti että se on
+// "deprecated" ja jäädytti koko sovelluksen.
+const morgan = require('morgan')
+morgan.token('requestBody', function (req, res) { return JSON.stringify(req.body) })
+app.use(morgan(':method :status :url :response-time :requestBody'))
+
 let persons = [
     {
         id: 1,
@@ -59,7 +65,6 @@ app.delete('/api/persons/:id', (req, res) => {
 
 app.post('/api/persons', (req, res) => {
     const person = req.body
-    console.log(person)
 
     if(person.name === "" || person.number === "") {
         return res.status(400).json({ 
