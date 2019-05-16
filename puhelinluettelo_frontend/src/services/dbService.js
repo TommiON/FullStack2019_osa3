@@ -1,29 +1,29 @@
 import axios from 'axios'
 
 const getAll = () => {
-    const request = axios.get('http://localhost:3001/api/persons')
+    const request = axios.get('/api/persons')
     return request.then(response => response.data)
 }
 
 const getOne = personId => {
-    const url = `http://localhost:3001/api/persons/${personId}`
+    const url = `/api/persons/${personId}`
     const request = axios.get(url)
     return request.then(response => response.data)
 }
 
 const add = newPerson => {
-    const request = axios.post('http://localhost:3001/api/persons', newPerson)
+    const request = axios.post('/api/persons', newPerson)
     return request.then(response => response.data)
 }
 
 const remove = personId => {
-    const url = `http://localhost:3001/api/persons/${personId}`
+    const url = `/api/persons/${personId}`
     const request = axios.delete(url)
     return request.then(response => response.data)
 }
 
 const replace = (personId, nimi, numero) => {
-    const url = `http://localhost:3001/api/persons/${personId}`
+    const url = `/api/persons/${personId}`
     console.log('nyt ollaan Axios-funktiossa')
     console.log('id: ', personId, " nimi: ", nimi, " uusi numero: ", numero)
     const request = axios.put(url, 
