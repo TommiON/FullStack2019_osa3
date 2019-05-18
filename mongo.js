@@ -1,24 +1,23 @@
 const mongoose = require('mongoose')
 
-// Huom. Palomuuriongelman takia en saanut MongoDB Atlasta toimimaan,
-// joten käytetty paikallisesti asennettua MongoDB:tä
-
+// Huom. Palomuuriongelman tms. takia en saanut MongoDB Atlasta toimimaan,
+// joten tässä on käytetty paikallisesti asennettua MongoDB:tä
 // const salasana = process.argv[2]
 
 const osoite = 'mongodb://127.0.0.1:27017/testiosa3'
 mongoose.connect(osoite, { useNewUrlParser: true })
 
 const yhteystietoSkeema = new mongoose.Schema({
-    nimi: String,
-    numero: String
+    name: String,
+    number: String
 })
 
 const Person = mongoose.model('Person', yhteystietoSkeema)
 
 if (process.argv.length === 5) {
     const person = new Person({
-        nimi: process.argv[3],
-        numero: process.argv[4]
+        name: process.argv[3],
+        number: process.argv[4]
     })
     
     person.save().then(response => {
@@ -36,7 +35,7 @@ if (process.argv.length<5) {
     Person.find({}).then(result => {
         console.log('Puhelinluettelo: ')
         result.forEach(person => {
-          console.log(person.nimi, person.numero)
+          console.log(person.name, person.number)
         })
         mongoose.connection.close()
       })

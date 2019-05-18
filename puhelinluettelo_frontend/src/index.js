@@ -45,6 +45,7 @@ const App = () => {
         .then(setStatusMessage(`${newName} lisätty`))
         .then(setNewName(''))
         .then(setNewNumber(''))
+        .catch(error => {setStatusMessage('Virhe: nimen pitää olla vähintään 3 merkkiä, numeron 8.')})
         setTimeout(() => {setStatusMessage(null)}, 3000)
       }
   }
