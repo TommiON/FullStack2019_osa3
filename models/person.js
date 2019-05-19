@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const url = process.env.MONGODB_URI
 var uniqueValidator = require('mongoose-unique-validator')
 
+// mongodb://127.0.0.1:27017/testiosa3
+
 console.log('yhdistetään: ', url)
 
 mongoose.connect(url, { useNewUrlParser: true })

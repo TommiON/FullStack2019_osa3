@@ -31,7 +31,7 @@ const App = () => {
           .then(setNewNumber(''))
           .catch(error => {
             setStatusMessage(`Ei onnistu, nimeä ei enää ole luettelossa`)
-          })   
+          })    
           setTimeout(() => {setStatusMessage(null)}, 3000)
         }
       } else {
