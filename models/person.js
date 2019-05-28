@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const url = process.env.MONGODB_URI
 var uniqueValidator = require('mongoose-unique-validator')
 
+// samoin kuin mongo.js:ssä, käytetty palomuurinongelman vuoksi paikallista MongoDB-asennusta
 // mongodb://127.0.0.1:27017/testiosa3
 
 console.log('yhdistetään: ', url)
@@ -15,7 +16,7 @@ mongoose.connect(url, { useNewUrlParser: true })
   })
 
 const personSchema = new mongoose.Schema({
-    name: {type: String, minlength: 3},
+    name: {type: String, minlength: 3, unique: true},
     number: {type: String, minlength: 8}
 })
 

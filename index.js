@@ -11,6 +11,7 @@ const Person = require('./models/person')
 
 // Huom: Tiny-konfiguraatiota ei voinut käyttää, Morgan valitti että se on
 // "deprecated" ja jäädytti koko sovelluksen.
+//
 
 const morgan = require('morgan')
 morgan.token('requestBody', function (req, res) { return JSON.stringify(req.body) })
